@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Encriptador</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1><img src="logo/logo.png"></h1>
+    </header>
+    <main>
+        <div>
+            <textarea class="texto-entrada" id="texto">Ingrese el texto aquí</textarea>
+        </div>
+        <div class="resultado" id="res">
+           <textarea class="texto-salida" id="texto-sal" readonly></textarea>
+        </div>
+
+        <p class="advertencia"> <img src="imagenes/advertencia.png"> Solo letras minusculas y sin acento</p>
+        
+        <fieldset>
+            <button class="encriptar" id="btnEncriptar" onclick="encriptar(input.value)"> Encriptar</button>
+            <button class="desencriptar" id="btnDesencriptar" onclick="desencriptar(input.value)">Desencriptar</button>
+        </fieldset>
+    </main>
+
+    <script>
+        var input = document.getElementById("texto");
+        var elem = document.getElementById("res");
+        var salida = document.getElementById("texto-sal");
+        console.log(elem.value);
+
+        function encriptar(cadena) {
+            var aux = "";
+            for (var i = 0; i < cadena.length; i++) {
+                if (cadena.charAt(i) == "a") {
+                    aux = aux + "ai";
+                } else {
+                    if (cadena.charAt(i) == "e") {
+                        aux = aux + "enter";
+                    } else {
+                        if (cadena.charAt(i) == "i") {
+                            aux = aux + "imes";
+                        } else {
+                            if (cadena.charAt(i) == "o") {
+                                aux = aux + "ober";
+                            } else {
+                                if (cadena.charAt(i) == "u") {
+                                    aux = aux + "ufat";
+                                } else {
+                                    aux = aux + cadena.charAt(i);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            console.log(aux);
+            salida.value=aux;
+        }
+
+        function desencriptar(cadena){
+            var aux="";
+            aux=cadena;
+            aux=aux.replaceAll('ai','a');
+            aux=aux.replaceAll('enter','e');
+            aux=aux.replaceAll('imes','i');
+            aux=aux.replaceAll('ober','o');
+            aux=aux.replaceAll('ufat','u');
+            console.log(aux);
+            salida.value=aux;
+        }
+
+    </script>
+
+</body>
+
+</html>
